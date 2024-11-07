@@ -1,0 +1,109 @@
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+.cuadrado {
+    /* border-style:solid;
+    border-width:2px;
+    border-color:red; */
+    position: absolute;
+    width: 15%;
+    border-radius: 100%;
+    overflow: hidden;
+    top: 15vh;
+    left: 5%;
+}
+
+.cuadrado:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.cuadrado > img{
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+}
+
+.cover{
+    /* position: absolute;
+    right: 0; */
+    position: relative;
+    width: 100vw;
+    height: 30vh;
+    background-image: url(https://plus.unsplash.com/premium_photo-1671229456411-659ff6049231?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.info{
+    margin-top: 15vh;
+    display: flex;
+}
+
+.info p:first-child, .info p:nth-child(2){
+    margin: 0;
+}
+
+.info > div > div > p:first-child{
+    font-weight: 700;
+}
+
+.info > div:first-child{
+    width: 30%;
+    padding: 0.5em 1em;
+}
+
+.info > div:nth-child(2){
+    width: 70%;
+}
+
+
+.column > div{
+    /* background-color: blue; */
+    transition: scale 0.2s;
+}
+
+.column > div:hover{
+    scale: 105%;
+}
+
+.publicacion-container{
+    border-radius: 2em;
+    overflow: hidden;
+    transition: scale 0.3s, border 0.5s;
+}
+
+.publicacion-container:hover{
+    scale: 102%;
+    border-radius: 1em;
+}
+
+.column > div{
+    margin-top: 20px;
+}
+
+.section{
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section > div{
+    width: 32%;
+}
+
+.section >div >div{
+    width: 100%; 
+}
+.section div div img{
+    width: 100%;
+}
+
+.descripcion{
+    margin-top: 1em;
+}

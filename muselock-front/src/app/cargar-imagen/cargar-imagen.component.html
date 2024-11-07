@@ -1,0 +1,32 @@
+<main>
+  <div class="cargar-imagen">
+      <h1>Carga tu obra</h1>
+      <div class="drop-area" #dropArea (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+          <button (click)="onButtonClick()">Select a file</button>
+          <span>or</span>
+          <p class="msj-cargar-imagen" #dragText>Drag an drop a file here</p>
+          <input type="file" id="image" class="form-control" accept="image/*" hidden #inputFile (change)="onFileChange($event)">
+      </div>
+      <div id="previsualizacion" #previewContainer></div>
+  </div>
+  <div class="info">
+      <h2>Así te protegemos</h2>
+      <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis recusandae inventore quos obcaecati odio assumenda cum vel exercitationem praesentium, quam quaerat fuga, illum consectetur facere porro quas provident, ipsa architecto.
+      </p>
+      <a href="#">Conoce más...</a>
+      <div id="previsualizacion">
+
+      </div>
+  </div>
+</main>
+
+
+
+<!-- <div class="container w-50 mx-auto pt-5">
+    <div class="mb-5">
+      <label for="image" class="form-label">Imagen</label>
+      <input type="file" id="image" class="form-control" accept="image/*" (change)="onFileSelected($event)">
+    </div>
+    <button class="btn btn-primary" (click)="upload()">Subir Imagen</button>
+  </div> -->

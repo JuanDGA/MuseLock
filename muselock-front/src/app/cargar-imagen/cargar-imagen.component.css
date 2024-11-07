@@ -1,0 +1,102 @@
+main{
+    display: flex;
+    justify-content: space-around;
+}
+
+main > div{
+    width: 50%;
+    text-align: center;
+    padding: 2em;
+    font-family: sans-serif;
+}
+
+.drop-area{
+    background-color: #93E1D8;
+    padding: 2em;
+    border-radius: 1em;
+    height: 50vh;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: scale 0.5s;
+}
+
+.drop-area button{
+    width: 50%;
+    padding: 1em 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    border-radius: 5em;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.active{
+    background-color: #80c2ba;
+    scale: 105%;
+}
+
+#previsualizacion{
+    margin-top: 1em;
+}
+
+img{
+    width: 100%;
+}
+
+#previsualizacion > img{
+    width: 100%;
+
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+.info > p{
+    text-align: justify;
+}
+
+h2{
+    color: #861657;
+}
+
+h1{
+    font-size: 2rem;
+    margin-bottom: 1em;
+    color: #861657;
+    font-weight: 700;
+}
+
+button::before{
+    content: ""; /* Eliminar la imagen del content */
+    width: 30px;
+    height: 30px;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block; 
+    margin-right: 10px; 
+    background-image: url("../../assets/image/subir.png");;
+}
+
+button{
+    /* padding: 0.4em 0.3em; */
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+    font-family: sans-serif;
+    cursor: pointer;
+    transition: scale 0.3s;
+    margin-right: 2em;
+}
