@@ -1,31 +1,25 @@
 package pe.muselock.demongfile.controller;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import pe.muselock.demongfile.dto.UsuarioBasicDTO;
-import pe.muselock.demongfile.entity.UsuarioEntity;
-import pe.muselock.demongfile.service.UsuarioService;
-
-
-@RestController
-@RequestMapping("login")
+@Controller
 public class LoginController {
-  @Autowired
-  private UsuarioService usuarioService;
 
-  @Autowired
-  private ModelMapper modelMapper;
-
-  @PostMapping
-  @ResponseStatus(code = HttpStatus.CREATED)
-  public UsuarioBasicDTO autenticar(@RequestParam("usuario") String usuario, @RequestParam("password") String password) throws Exception {
-    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyUsuario(usuario);
-    if (!(usuarioEntity.getPassword().equals(password))) {
-      throw new Exception("Usuario incorrecto");
+    @GetMapping("/")
+    public String home() {
+        return "home";
     }
-    return modelMapper.map(usuarioEntity, UsuarioBasicDTO.class);
-  }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard(Model model, OidcUser principal) {
+        model.addAttribute("user", principal);
+        return "dashboard";
+    }
 }
