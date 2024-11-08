@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { CargarImagenComponent } from './cargar-imagen/cargar-imagen.component';
 import { FeedComponent } from './feed/feed.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { RegistroComponent } from './registro/registro.component';
 
 export const routes: Routes = [
 {
@@ -27,5 +28,11 @@ export const routes: Routes = [
     path: 'perfil',
     component: PerfilComponent,
     title: 'Tu Perfil | MuseLock'
+},
+
+{
+    path: 'registrate',
+    component: RegistroComponent,
+    title: 'Registrate | MuseLock'
 }
 ];
