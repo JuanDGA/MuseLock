@@ -10,4 +10,5 @@ public class ImagenEntity extends BaseEntity{
     private Integer ancho;
     private Integer largo;
     private String formato;
+    private String hash;
 }
