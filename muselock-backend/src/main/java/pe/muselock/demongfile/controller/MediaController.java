@@ -67,22 +67,26 @@ public class MediaController {
 
         Integer ancho = Integer.valueOf(info[1]);
         Integer largo = Integer.valueOf(info[2]);
-
         String url = ServletUriComponentsBuilder
         .fromHttpUrl(host)
         .path("/api/media/")
         .path(path)
         .toUriString();  
-        
+        String hash=imagenService.calcularHash(multipartFile.getBytes());
+        if(imagenService.obtenerImagenbyHash(hash)!=null){
+            //CALCULO ALGORITMO DE SIMILITUD
 
+            //si es igual, return que salga de la función
+        }
+        
         ImagenEntity imagenEntity = new ImagenEntity();
         imagenEntity.setAncho(ancho);
         imagenEntity.setLargo(largo);
         imagenEntity.setFormato(info[3]);
         imagenEntity.setUrl(url);
+        imagenEntity.setHash(hash);
 
         ImagenEntity imagen = imagenService.registrarImagen(imagenEntity);
-
 
         PublicacionEntity publicacionEntity = new PublicacionEntity();
         publicacionEntity.setFechaPublicacion(new Date());
@@ -90,9 +94,8 @@ public class MediaController {
         publicacionEntity.setVistas(0);
         publicacionEntity.setUsuario(usuarioEntity);
         publicacionEntity.setImagen(imagen);
-
         publicacionService.crearPublicacion(publicacionEntity);
-        
+            
         return Map.of("url", url);
     }
     
