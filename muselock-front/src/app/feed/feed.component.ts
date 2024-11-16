@@ -1,15 +1,36 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 import { CommonModule } from '@angular/common';
+import { Publicacion } from '../clases/publicacion';
+import { PublicacionService } from '../servicios/publicacion.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [PublicacionComponent, PublicacionComponent, CommonModule],
+  imports: [PublicacionComponent, PublicacionComponent, CommonModule, HttpClientModule],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css'
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit{
+
+  publicaciones: Array<Publicacion> = [];
+  publicacionesAgrupadas: any[] = [];
+
+  constructor(private publicacionService: PublicacionService){}
+
+  getPublicaciones():void{
+    this.publicacionService.getPublicaciones().subscribe((publicaciones)=>{
+      this.publicaciones = publicaciones;
+    });
+  }
+
+  ngOnInit() {
+    this.getPublicaciones();
+    this.publicacionesAgrupadas = this.agruparEnColumnas(this.publicaciones, 4);
+  }
+
   isModalOpen = false;
   isScreenBlocked = false;
 
@@ -44,6 +65,15 @@ export class FeedComponent {
     }, 1000); // Mantener el fondo negro por 1 segundo
   }
   
-
+  agruparEnColumnas(array: any[], tamanio: number): any[] {
+    const resultado: any[] = [];
+    for (let i = 0; i < tamanio; i++) {
+      resultado.push([]);
+    }
+    array.forEach((item, index) => {
+      resultado[index % tamanio].push(item);
+    });
+    return resultado;
+  }
   
 }
