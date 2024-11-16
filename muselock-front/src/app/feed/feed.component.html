@@ -210,12 +210,12 @@
               <div class="cuadrado">
                 <img 
                   class="img-thumbnail rounded-circle"
-                  [src]="publicacion.imagen.url"
-                  [alt]="publicacion.fechaPublicacion">
+                  src={{publicacion.usuario.fotoPerfil.url}}
+                  alt={{publicacion.usuario.usuario}}>
               </div>
               <div class="info-usuario">
-                <p>{{ publicacion.likes }} likes</p>
-                <p>{{ publicacion.fechaPublicacion }}</p>
+                <p>{{ publicacion.usuario.nombre}} likes</p>
+                <p>{{ publicacion.usuario.usuario}}</p>
               </div>
             </div>
           </div>

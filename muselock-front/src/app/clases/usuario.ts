@@ -10,7 +10,7 @@ export class Usuario {
     ciudad: string;
     pais: string;
     descripcion: string;
-    imagen: Imagen;
+    fotoPerfil: Imagen;
     
     constructor(
         id: number,
@@ -22,7 +22,7 @@ export class Usuario {
         ciudad: string,
         pais: string,
         descripcion: string,
-        imagen: Imagen
+        fotoPerfil: Imagen
     ){
         this.id = id;
         this.nombre = nombre;
@@ -33,6 +33,6 @@ export class Usuario {
         this.ciudad = ciudad;
         this.pais = pais;
         this.descripcion = descripcion;
-        this.imagen = imagen;
+        this.fotoPerfil = fotoPerfil;
     }
 }

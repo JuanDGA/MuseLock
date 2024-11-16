@@ -6,10 +6,10 @@ export class Publicacion {
     likes: number;
     vistas: number;
     fechaPublicacion: Date;
-    usuario: Usuario;
     imagen: Imagen;
+    usuario: Usuario;
 
-    constructor(id: number, likes: number, vistas: number, fechaPublicacion: Date, usuario: Usuario, imagen: Imagen) {
+    constructor(id: number, likes: number, vistas: number, fechaPublicacion: Date, imagen: Imagen,usuario: Usuario) {
         this.id = id;
         this.likes = likes;
         this.vistas = vistas;
