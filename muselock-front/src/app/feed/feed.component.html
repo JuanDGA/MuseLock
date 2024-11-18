@@ -1,4 +1,5 @@
-<section>
+<div *ngIf="isScreenBlocked" class="screen-block"></div>
+<!--section>
     <div class="column">
         <div>
             <div class="publicacion-container" (click)="openModal()">
@@ -190,6 +191,38 @@
         </div>
     </div>
 
-</section>
+</section-->
+
+
+<section class="container-fluid">
+    <!-- Iterar sobre las columnas agrupadas -->
+   
+      <div class="col" *ngFor="let columna of publicacionesAgrupadas">
+        <!-- Contenedor para cada columna -->
+        <div class="publicacion-column">
+          <!-- Iterar sobre cada publicación dentro de la columna -->
+          <div class="publicacion-container mb-4" *ngFor="let publicacion of columna">
+            <img  
+              class="img-fluid rounded"
+              [src]="publicacion.imagen.url"
+              [alt]="publicacion.fechaPublicacion">
+            <div class="info-container mt-2">
+              <div class="cuadrado">
+                <img 
+                  class="img-thumbnail rounded-circle"
+                  src={{publicacion.usuario.fotoPerfil.url}}
+                  alt={{publicacion.usuario.usuario}}>
+              </div>
+              <div class="info-usuario">
+                <p>{{ publicacion.usuario.nombre}} likes</p>
+                <p>{{ publicacion.usuario.usuario}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </section>
+  
 
 <app-publicacion *ngIf="isModalOpen" (close)="closeModal()"></app-publicacion>

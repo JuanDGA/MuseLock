@@ -1,0 +1,10 @@
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-01-30', '20', '9770', 1, 1);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-06-28', '06861', '2673', 2, 2);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-07-16', '15', '627', 3, 3);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-08-27', '5', '179', 4, 4);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-07-30', '039', '89', 5, 5);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-06-18', '7067', '92', 6, 6);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-09-30', '0658', '68', 7, 7);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-05-22', '8021', '9', 8, 8);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-09-04', '42852', '3508', 9, 9);
+insert into PUBLICACION_ENTITY (fecha_publicacion, likes, vistas, imagen_id, usuario_id) values ('2024-07-17', '46', '75199', 10, 10);

@@ -11,4 +11,5 @@ public class PublicacionDTO extends BaseDTO{
     private Integer likes;
 
     private ImagenDTO imagen;
+    private UsuarioBasicDTO usuario;
 }
