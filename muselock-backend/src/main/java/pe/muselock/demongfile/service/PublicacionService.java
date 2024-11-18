@@ -3,10 +3,12 @@ package pe.muselock.demongfile.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import pe.muselock.demongfile.entity.ImagenEntity;
 import pe.muselock.demongfile.entity.PublicacionEntity;
@@ -49,4 +51,14 @@ public class PublicacionService {
     public List<PublicacionEntity> publicaciones(){
         return publicacionRepository.findAll();
     }
+
+    @Transactional
+	public PublicacionEntity getPublicacion(Long publicacionId) throws EntityNotFoundException {
+		log.info("Inicia proceso de consultar el libro con id = {0}", publicacionId);
+		Optional<PublicacionEntity> publicacionEntity = publicacionRepository.findById(publicacionId);
+		if (publicacionEntity.isEmpty())
+			throw new EntityNotFoundException("Publicacion no encotrada");
+		log.info("Termina proceso de consultar el libro con id = {0}", publicacionId);
+		return publicacionEntity.get();
+	}
 }

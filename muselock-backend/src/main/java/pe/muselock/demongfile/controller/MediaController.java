@@ -1,5 +1,6 @@
 package pe.muselock.demongfile.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -104,6 +106,13 @@ public class MediaController {
     return modelMapper.map(publicaciones, new TypeToken<List<PublicacionDTO>>() {
     }.getType());
   }
+
+  @GetMapping(value = "publicaciones/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public PublicacionDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
+		PublicacionEntity bookEntity = publicacionService.getPublicacion(id);
+		return modelMapper.map(bookEntity, PublicacionDTO.class);
+	}
 
 }
 
