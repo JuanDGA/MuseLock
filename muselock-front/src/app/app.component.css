@@ -38,3 +38,18 @@ nav div a:hover{
     color: #cecece9d;
 }
 
+
+
+
+
+/* 
+    NAV Provisional
+*/
+.nav-provisional{
+    display: flex;
+}
+
+.nav-provisional > li{
+    margin-right: 1em;
+    list-style: none;
+}

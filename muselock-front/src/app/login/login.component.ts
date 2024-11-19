@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { LoginserviceService } from './loginservice.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from './usuario';
 
 @Component({
@@ -18,14 +19,19 @@ export class LoginComponent {
     password: new FormControl('')
   })
 
-  constructor(){}
+  constructor(private router: Router){}
 
   submitApplication(){
     this.loginService.autenticar(
       this.applyForm.value.usuario ?? '',
       this.applyForm.value.password ?? ''
     ).subscribe({
-      next: (apiData: Usuario) => {sessionStorage.setItem('usuario', apiData.nombre); console.log(apiData)},
+      next: (apiData: Usuario) => {
+        sessionStorage.setItem('usuario', apiData.nombre); 
+        sessionStorage.setItem('id', String(apiData.id));
+        console.log(apiData);
+        this.router.navigate(["/"])
+      },
       error: (e: string | undefined) => console.log("error")
     });
   }
