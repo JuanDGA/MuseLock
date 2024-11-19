@@ -7,7 +7,12 @@ nav{
     padding: 0.5em 1em;
 }
 
-nav h1{
+h2 a{
+    color: white;
+    text-decoration: none;
+}
+
+nav h2{
     margin: 0;
     font-size: 2rem;
 }

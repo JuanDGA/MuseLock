@@ -10,13 +10,19 @@
       <div id="previsualizacion" #previewContainer></div>
   </div>
   <div class="info">
-      <h2>Así te protegemos</h2>
-      <p>
-        En nuestro sitio web, protegemos tus imágenes con tecnología avanzada. Cada archivo subido genera una huella digital única mediante hashing, permitiendo rastrear y verificar su autenticidad. Además, utilizamos algoritmos de similitud visual que detectan intentos de copia o modificación y contamos con medidas que dificultan las capturas de pantalla. Con un monitoreo activo, te notificamos si alguien intenta usar tus imágenes sin autorización, para que puedas compartir tu creatividad con total confianza. 🔒✨
-      </p>
-      <a href="https://muselock6.wixsite.com/muselock">Conoce más...</a>
+      
       <div id="previsualizacion">
+        <h2 *ngIf="!imagenUrl">Así te protegemos</h2>
+        <h2 *ngIf="imagenUrl  && !hash">Calculando hash...</h2>
+        <h4 *ngIf="hash">{{hash}}</h4>
 
+
+        <p *ngIf="!imagenUrl">
+          En nuestro sitio web, protegemos tus imágenes con tecnología avanzada. Cada archivo subido genera una huella digital única mediante hashing, permitiendo rastrear y verificar su autenticidad. Además, utilizamos algoritmos de similitud visual que detectan intentos de copia o modificación y contamos con medidas que dificultan las capturas de pantalla. Con un monitoreo activo, te notificamos si alguien intenta usar tus imágenes sin autorización, para que puedas compartir tu creatividad con total confianza. 🔒✨
+        </p>
+        <a *ngIf="!imagenUrl" href="https://muselock6.wixsite.com/muselock">Conoce más...</a>
+
+        <img *ngIf="imagenUrl" [src]="imagenUrl" alt="">
       </div>
   </div>
 </main>

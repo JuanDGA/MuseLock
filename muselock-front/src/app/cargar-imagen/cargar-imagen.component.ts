@@ -1,17 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MediaService } from '../media.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cargar-imagen',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, CommonModule],
   providers: [MediaService],
   templateUrl: './cargar-imagen.component.html',
   styleUrl: './cargar-imagen.component.css',
   encapsulation: ViewEncapsulation.None,
 })
 export class CargarImagenComponent {
+  imagenUrl!: string;
+  hash!: string;
 
   constructor(private mediaService: MediaService){}
 
@@ -69,7 +72,8 @@ export class CargarImagenComponent {
       image.alt = file.name;
 
       this.previewContainer.nativeElement.innerHTML = "";
-      this.previewContainer.nativeElement.appendChild(image);
+      this.imagenUrl = fileUrl;
+      // this.previewContainer.nativeElement.appendChild(image);
     };
     fileReader.readAsDataURL(file);
     const formData = new FormData();
@@ -85,6 +89,7 @@ export class CargarImagenComponent {
     this.mediaService.uploadFile(formData).subscribe(
       response => {
         console.log('response', response);
+        this.hash = response.hash;
       }
     )
   }
