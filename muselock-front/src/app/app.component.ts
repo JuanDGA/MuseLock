@@ -27,7 +27,6 @@ export class AppComponent implements AfterViewChecked{
     let user = sessionStorage.getItem('usuario');
     if (user != null){
       this.islogged = true;
-      console.log("LOGEADO");
     } else {
       this.islogged = false;
     }
