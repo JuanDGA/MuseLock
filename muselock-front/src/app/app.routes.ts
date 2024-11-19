@@ -19,7 +19,7 @@ export const routes: Routes = [
 },
 
 {
-    path: 'feed',
+    path: '',
     component: FeedComponent,
     title: 'Explora | MuseLock'
 },

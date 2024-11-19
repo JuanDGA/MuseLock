@@ -72,6 +72,21 @@ export class CargarImagenComponent {
       this.previewContainer.nativeElement.appendChild(image);
     };
     fileReader.readAsDataURL(file);
+    const formData = new FormData();
+    formData.append('file', file);
+    const usuarioId = sessionStorage.getItem('id');
+    
+    if (usuarioId != null){
+      formData.append('id', usuarioId);
+    }
+
+    console.log(formData);
+
+    this.mediaService.uploadFile(formData).subscribe(
+      response => {
+        console.log('response', response);
+      }
+    )
   }
 
   // upload(){

@@ -3,20 +3,18 @@
   <h1>MuseLock</h1>
   <div>
     <ul>
-      <li><a [routerLink]="['/login']" href="">Iniciar Sesion</a></li>
-      <!-- <li><a (click)="login()" href="">Iniciar Sesion</a></li> -->
-      <li><a [routerLink]="['/registrate']">Registrarse</a></li>
+
+      <li *ngIf="islogged == false"><a [routerLink]="['/login']" href="">Iniciar Sesion</a></li>
+      <li *ngIf="islogged == false"><a [routerLink]="['/registrate']">Registrarse</a></li>
+
+      <li *ngIf="islogged"><a [routerLink]="['/perfil']">Perfil</a></li>
+      <li *ngIf="islogged"><a [routerLink]="['/upload']" href="">Subir Imagen</a></li>
+      <li *ngIf="islogged" (click)="logout()"><a (click)="logout()">Logout</a></li>
+
 
     </ul>
   </div>
 </nav>
-
-<ul>
-  <li><a [routerLink]="['/upload']" href="">Subir Imagen</a></li>
-  <li><a [routerLink]="['/feed']" href="">Feed</a></li>
-  <li><a [routerLink]="['/perfil']" href="">Perfil</a></li>
-</ul>
-
 
 
 <router-outlet></router-outlet>

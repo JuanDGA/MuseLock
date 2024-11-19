@@ -31,7 +31,7 @@ public class ImagenService {
     public ImagenEntity obtenerImagenbyHash(String hash) throws Exception{
         Optional<ImagenEntity> imageEntity = imagenRepository.findByHash(hash);
         if(imageEntity.isEmpty()){
-            throw new Exception("Usuario no encontrado");
+            throw new Exception("Imagen no encontrada");
         }
         return imageEntity.get();
     }

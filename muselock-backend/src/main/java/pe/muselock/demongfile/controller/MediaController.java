@@ -50,6 +50,8 @@ public class MediaController {
 
   @PostMapping("upload/")
   public Map<String, String> uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("id") Long id) throws Exception {
+    
+    System.out.println(id);
     UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(id);
 
     String[] info = storageService.store(multipartFile).split(",");
@@ -64,11 +66,11 @@ public class MediaController {
         .path(path)
         .toUriString();
     String hash = imagenService.calcularHash(multipartFile.getBytes());
-    if (imagenService.obtenerImagenbyHash(hash) != null) {
-      //CALCULO ALGORITMO DE SIMILITUD
+    // if (imagenService.obtenerImagenbyHash(hash) != null) {
+    //   //CALCULO ALGORITMO DE SIMILITUD
 
-      //si es igual, return que salga de la función
-    }
+    //   //si es igual, return que salga de la función
+    // }
 
     ImagenEntity imagenEntity = new ImagenEntity();
     imagenEntity.setAncho(ancho);
@@ -87,7 +89,7 @@ public class MediaController {
     publicacionEntity.setImagen(imagen);
     publicacionService.crearPublicacion(publicacionEntity);
 
-    return Map.of("url", url);
+    return Map.of("url", url, "hash", hash);
   }
 
   @GetMapping("{filename:.+}")

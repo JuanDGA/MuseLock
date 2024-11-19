@@ -36,7 +36,6 @@ public class UsuarioService {
         return usuarioRepository.save(usuarioEntity);
     }
 
-    @Transactional
     public UsuarioEntity obtenerUsuariobyId(Long idUsuario) throws Exception{
         Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findById(idUsuario);
         if(usuarioEntity.isEmpty()){
