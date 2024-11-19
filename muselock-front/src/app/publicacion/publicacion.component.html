@@ -5,42 +5,47 @@
             <img src="../assets/image/equis.png" alt="" (click)="closeModal()">
             <div class="user-container">
                 <div class="cuadrado">
-                    <img src="https://cdn.pixabay.com/photo/2021/06/15/16/11/man-6339003_1280.jpg" alt="" class="foto-perfil">
+                    <img 
+                        src={{publicacionDetail?.usuario?.fotoPerfil?.url}}
+                        alt="" 
+                        class="foto-perfil">
                 </div>
                 <div class="info-usuario">
-                    <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>{{publicacionDetail?.usuario?.nombre}}</p>
+                    <p>&#64;{{publicacionDetail?.usuario?.usuario}}</p>                    
                 </div>
                 <div></div>
             </div>
             <div class="img-container">
                 <div class="img">
                     <div class="info-imagen" [class.mostrar]="mostrarInf">
-                        <p><b>Autor:</b> &#64;KIAN_ilinez</p>
-                        <p><b>Fecha Publicacion:</b> 10 de Septiembre 2024</p>
-                        <p><b>Tamaño:</b> 1200x900</p>
-                        <p><b>Formato:</b> png</p>
+                        <p><b>Autor:</b> &#64;{{publicacionDetail?.usuario?.usuario}}</p>
+                        <p><b>Fecha Publicacion: </b>{{publicacionDetail?.fechaPublicacion}}</p>
+                        <p><b>Tamaño: </b> {{publicacionDetail?.imagen?.ancho}}px x {{publicacionDetail?.imagen?.largo}}px </p>
+                        <p><b>Formato: </b>{{publicacionDetail?.imagen?.formato}}</p>
                     </div> 
-                    <img src="https://cdn.pixabay.com/photo/2022/09/25/04/15/seagull-7477585_1280.jpg" alt="">
+                    <img 
+                        src={{publicacionDetail?.imagen?.url}} 
+                        alt="">
                 </div>
             </div>
 
             <div class="interacciones-container">
                 <div>
-                    <p>1590</p>
-                    <p>300</p>
-                    <p>450</p>
+                    <p>{{publicacionDetail?.vistas}}</p>
+                    <p>{{publicacionDetail?.likes}}</p>
+                    <p>{{publicacionDetail?.vistas}}</p>
                 </div>
 
                 <p class="button" (click)="mostrarInfo()">Información</p>
             </div>
 
-            <div class="etiquetas-container">
+            <!--div class="etiquetas-container">
                 <p>Fox</p>
                 <p>Animal</p>
                 <p>Red</p>
                 <p>Nature</p>
-            </div>
+            </div-->
         </div>
     </div>
 </div>

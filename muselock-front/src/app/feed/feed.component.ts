@@ -6,6 +6,7 @@ import { PublicacionService } from '../servicios/publicacion.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-feed',
   standalone: true,
@@ -17,6 +18,8 @@ export class FeedComponent implements OnInit{
 
   publicaciones: Array<Publicacion> = [];
   publicacionesAgrupadas: any[] = [];
+  selected: Boolean = false;
+  selectedPublicacion: Publicacion | null = null;
 
   constructor(private publicacionService: PublicacionService){}
 
@@ -34,12 +37,13 @@ export class FeedComponent implements OnInit{
   isModalOpen = false;
   isScreenBlocked = false;
 
-  openModal() {
-    this.isModalOpen = true;
+  openModal(): void {
+    this.isModalOpen = true; // Abre el modal
   }
 
-  closeModal() {
-    this.isModalOpen = false;
+  closeModal(): void {
+    this.isModalOpen = false; // Cierra el modal
+    this.selectedPublicacion = null; // Limpia la selección
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -74,6 +78,11 @@ export class FeedComponent implements OnInit{
       resultado[index % tamanio].push(item);
     });
     return resultado;
+  }
+
+  onSelected(publicacion: Publicacion): void {
+    this.selectedPublicacion = publicacion; // Asigna la publicación seleccionada
+    this.openModal();
   }
   
 }

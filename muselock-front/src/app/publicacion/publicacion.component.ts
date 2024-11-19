@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Publicacion } from '../clases/publicacion';
 @Component({
   selector: 'app-publicacion',
   standalone: true,
@@ -9,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class PublicacionComponent {
   @Output() close = new EventEmitter<void>();
+  @Input() publicacionDetail: Publicacion | null=null;
   mostrarInf: boolean = false;
 
   closeModal() {

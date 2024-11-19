@@ -6,7 +6,7 @@ insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('3825', '29
 insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('8929', '1', 'jpg', '$2a$04$VK5lABv1bJSbtALSpWu.quegwFi2fib9UZj/CmUEMpfmjEknXXmXm', 'https://cdn.pixabay.com/photo/2023/09/30/21/16/river-8286407_1280.png');
 insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('547', '3', 'jpg', '$2a$04$dOP6I4fHJKadTIIA4X7FcOGmNVBa28a1ZjFyxD5aJ5G9Uy/7XhCF2', 'https://cdn.pixabay.com/photo/2023/12/15/15/52/bird-8450958_1280.png');
 insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('0', '1377', 'jpg', '$2a$04$jPbGuNnY5yJbVmdJpaOpa.8RSf7YDiNYQuJ6ODMmLjLK.Xm4/hPfG', 'https://cdn.pixabay.com/photo/2018/09/14/11/57/lion-3676984_1280.jpg');
-insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('6056', '18740', 'jpg', '$2a$04$JkMK5JeO6DqY8cHQH9j7Zui2cYLF8uXHkBLB9m6.E7MI0CSuPjTpi', 'https://cdn.pixabay.com/photo/2022/09/25/04/15/seagull-7477585_1280.jpg');
+insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('6056', '18740', 'jpg', '$2a$04$JkMK5JeO6DqY8cHQH9j7Zui2cYLF8uXHkBLB9m6.E7MI0CSuPjTpi', 'https://cdn.pixabay.com/photo/2023/11/20/13/21/mountain-8401084_1280.png');
 insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('7313', '518', 'png', '$2a$04$hNGre2/O3H5cVP0nOxHnbeV7uTH.tXIxz8guAZlVJF22v6Q3Vh.3S', 'https://cdn.pixabay.com/photo/2022/06/29/15/47/mountain-7292048_1280.jpg');
 
 insert into IMAGEN_ENTITY (ancho, largo, formato, hash, URL) values ('3', '18', 'png', '$2a$04$/quiJXapv.WhLaswsOqyru8Vzx35FPqsCZxdJmGNGyoYbZ5WiarXu', 'https://cdn.pixabay.com/photo/2021/06/15/16/11/man-6339003_1280.jpg');

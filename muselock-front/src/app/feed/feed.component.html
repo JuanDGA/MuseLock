@@ -196,7 +196,6 @@
 
 <section class="container-fluid">
     <!-- Iterar sobre las columnas agrupadas -->
-   
       <div class="col" *ngFor="let columna of publicacionesAgrupadas">
         <!-- Contenedor para cada columna -->
         <div class="publicacion-column">
@@ -205,7 +204,9 @@
             <img  
               class="img-fluid rounded"
               [src]="publicacion.imagen.url"
-              [alt]="publicacion.fechaPublicacion">
+              [alt]="publicacion.fechaPublicacion"
+              (click)="onSelected(publicacion)"  
+              >
             <div class="info-container mt-2">
               <div class="cuadrado">
                 <img 
@@ -214,8 +215,8 @@
                   alt={{publicacion.usuario.usuario}}>
               </div>
               <div class="info-usuario">
-                <p>{{ publicacion.usuario.nombre}} likes</p>
-                <p>{{ publicacion.usuario.usuario}}</p>
+                <p>{{ publicacion.usuario.nombre}}</p>
+                <p>&#64;{{ publicacion.usuario.usuario}}</p>
               </div>
             </div>
           </div>
@@ -223,6 +224,12 @@
       </div>
     
   </section>
+
+  <app-publicacion
+    *ngIf="isModalOpen"
+    [publicacionDetail]="selectedPublicacion"
+    (close)="closeModal()"
+></app-publicacion>
   
 
-<app-publicacion *ngIf="isModalOpen" (close)="closeModal()"></app-publicacion>
+<!--app-publicacion *ngIf="isModalOpen" (close)="closeModal()"></app-publicacion-->
