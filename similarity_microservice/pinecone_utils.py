@@ -3,9 +3,11 @@ from functools import lru_cache
 from pinecone import Pinecone, ServerlessSpec, Index
 import os
 
+from config import get_settings
+
 @lru_cache
 def get_index() -> Index:
-    pc = Pinecone(os.getenv("PINECONE_API_KEY"))
+    pc = Pinecone(get_settings().pinecone_api_key)
 
     if not pc.has_index("muselock"):
         pc.create_index(

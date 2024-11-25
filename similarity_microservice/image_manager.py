@@ -3,10 +3,11 @@ from io import BytesIO
 import voyageai
 from PIL import Image
 import os
+from config import get_settings
 from pinecone_utils import get_index
 
 async def get_vector(image_data: str):
-    client = voyageai.AsyncClient(api_key=os.getenv("VOYAGEAI_API_KEY"))
+    client = voyageai.AsyncClient(api_key=get_settings().voyageai_api_key)
 
     image = Image.open(BytesIO(base64.b64decode(image_data)))
 
