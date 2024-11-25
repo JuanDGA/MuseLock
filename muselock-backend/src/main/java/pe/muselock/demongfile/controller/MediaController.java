@@ -17,11 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pe.muselock.demongfile.dto.PublicacionDTO;
 import pe.muselock.demongfile.entity.ImagenEntity;
 import pe.muselock.demongfile.entity.PublicacionEntity;
-import pe.muselock.demongfile.entity.UsuarioEntity;
-import pe.muselock.demongfile.service.ImagenService;
-import pe.muselock.demongfile.service.PublicacionService;
-import pe.muselock.demongfile.service.StorageService;
-import pe.muselock.demongfile.service.UsuarioService;
+import pe.muselock.demongfile.service.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,6 +32,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class MediaController {
   private final StorageService storageService;
+  private final SimilarityService similarityService;
   private final HttpServletRequest request;
 
   @Autowired
@@ -52,9 +49,9 @@ public class MediaController {
 
   @PostMapping("upload/")
   public Map<String, String> uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("id") Long id) throws Exception {
-    
-    System.out.println(id);
-    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(id);
+
+//    System.out.println(id);
+//    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(id);
 
     String[] info = storageService.store(multipartFile).split(",");
     String path = info[0];
@@ -68,11 +65,10 @@ public class MediaController {
         .path(path)
         .toUriString();
     String hash = imagenService.calcularHash(multipartFile.getBytes());
-    // if (imagenService.obtenerImagenbyHash(hash) != null) {
-    //   //CALCULO ALGORITMO DE SIMILITUD
 
-    //   //si es igual, return que salga de la función
-    // }
+    double mostSimilar = similarityService.checkSimilarity(multipartFile.getBytes());
+
+    if (mostSimilar > 0.85) throw new Exception("Image already exists");
 
     ImagenEntity imagenEntity = new ImagenEntity();
     imagenEntity.setAncho(ancho);
@@ -83,13 +79,15 @@ public class MediaController {
 
     ImagenEntity imagen = imagenService.registrarImagen(imagenEntity);
 
+    similarityService.save(multipartFile.getBytes(), imagen.getId());
+
     PublicacionEntity publicacionEntity = new PublicacionEntity();
     publicacionEntity.setFechaPublicacion(new Date());
     publicacionEntity.setLikes(0);
     publicacionEntity.setVistas(0);
-    publicacionEntity.setUsuario(usuarioEntity);
+//    publicacionEntity.setUsuario(usuarioEntity);
     publicacionEntity.setImagen(imagen);
-    publicacionService.crearPublicacion(publicacionEntity);
+    //publicacionService.crearPublicacion(publicacionEntity);
 
     return Map.of("url", url, "hash", hash);
   }
@@ -102,7 +100,7 @@ public class MediaController {
     return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType).body(file);
   }
 
-  @GetMapping("publicaciones/")
+  @GetMapping("publicaciones")
   public List<PublicacionDTO> getPublicaciones() {
     List<PublicacionEntity> publicaciones = publicacionService.publicaciones();
     return modelMapper.map(publicaciones, new TypeToken<List<PublicacionDTO>>() {
@@ -110,11 +108,11 @@ public class MediaController {
   }
 
   @GetMapping(value = "publicaciones/{id}")
-	@ResponseStatus(code = HttpStatus.OK)
-	public PublicacionDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
-		PublicacionEntity bookEntity = publicacionService.getPublicacion(id);
-		return modelMapper.map(bookEntity, PublicacionDTO.class);
-	}
+  @ResponseStatus(code = HttpStatus.OK)
+  public PublicacionDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
+    PublicacionEntity bookEntity = publicacionService.getPublicacion(id);
+    return modelMapper.map(bookEntity, PublicacionDTO.class);
+  }
 
 }
 

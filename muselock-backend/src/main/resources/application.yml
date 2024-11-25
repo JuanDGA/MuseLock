@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: demongfile
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:h2:mem:muselock
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: true
+  h2:
+    console:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${AUTH0_DOMAIN}/
+media:
+  location: mediafiles
+server:
+  servlet:
+    context-path: /api
+  port: 4200
+similarity:
+  url: http://localhost:9000

@@ -1,1 +1,5 @@
 asyncio
+voyageai
+pillow
+pinecone
+fastapi[standard]
