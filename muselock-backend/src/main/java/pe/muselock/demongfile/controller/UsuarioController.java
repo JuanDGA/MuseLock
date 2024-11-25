@@ -35,5 +35,5 @@ public class UsuarioController {
     UsuarioEntity usuarioEntity = usuarioService.crearUsuario(modelMapper.map(usuarioDTO, UsuarioEntity.class));
     return modelMapper.map(usuarioEntity, UsuarioBasicDTO.class);
   }
-  
+
 }

@@ -1,26 +1,22 @@
 package pe.muselock.demongfile.entity;
 
-import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 @Entity
-public class PublicacionEntity extends BaseEntity{
-    private Integer vistas;
-    private Integer likes;
-    
-    @Temporal(TemporalType.DATE)
-    private Date fechaPublicacion;
+public class PublicacionEntity extends BaseEntity {
+  private Integer vistas;
+  private Integer likes;
 
-    @ManyToOne
-    private UsuarioEntity usuario;
+  @Temporal(TemporalType.DATE)
+  private Date fechaPublicacion;
 
-    @OneToOne
-    private ImagenEntity imagen;
+  @ManyToOne
+  private UsuarioEntity usuario;
+
+  @OneToOne
+  private ImagenEntity imagen;
 }

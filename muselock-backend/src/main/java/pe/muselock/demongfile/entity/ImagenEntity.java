@@ -5,10 +5,10 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ImagenEntity extends BaseEntity{
-    private String url;
-    private Integer ancho;
-    private Integer largo;
-    private String formato;
-    private String hash;
+public class ImagenEntity extends BaseEntity {
+  private String url;
+  private Integer ancho;
+  private Integer largo;
+  private String formato;
+  private String hash;
 }
