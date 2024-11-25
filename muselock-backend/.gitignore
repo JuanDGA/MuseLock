@@ -167,6 +167,7 @@ $RECYCLE.BIN/
 *.iws
 *.iml
 *.ipr
+mediafiles/**
 
 ### NetBeans ###
 /nbproject/private/
