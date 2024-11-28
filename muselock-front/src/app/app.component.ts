@@ -16,26 +16,28 @@ import {firstValueFrom} from "rxjs"
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent implements OnInit {
   title = 'muselock';
 
   islogged = false;
 
   constructor(private router: Router, public auth: AuthService){}
 
-  ngAfterViewChecked(){
+  ngOnInit(){
     this.auth.isAuthenticated$.subscribe(it => this.islogged = it);
   }
 
   login(isSignup: boolean = false){
-    this.auth.loginWithRedirect({authorizationParams: {screen_hint: isSignup ? "login" : "signup"}});
+    this.auth.loginWithRedirect({
+      authorizationParams: {
+        screen_hint: isSignup ? "login" : "signup",
+        scope: "profile oidc email read:current_user"
+      }
+    });
   }
 
   logout(){
-    console.log('salir');
-    sessionStorage.removeItem('usuario');
-    sessionStorage.removeItem('id');
-    this.islogged = false;
+    this.auth.logout();
     this.router.navigate(['/']);
   }
 }

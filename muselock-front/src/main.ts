@@ -8,15 +8,15 @@ import { provideAuth0} from '@auth0/auth0-angular';
   bootstrapApplication(AppComponent,
     {
       providers: [
+        ...appConfig.providers,
         provideAuth0({
           domain: 'muselock.us.auth0.com',
           clientId: 'V1eXAdHVXP8H7YdYGmWgxtSFATF9G30K',
           authorizationParams: {
             audience: 'https://muselock/',
-            redirect_uri: window.location.origin
-          }
+            redirect_uri: window.location.origin,
+          },
         }),
-        ...appConfig.providers,
       ]
     }
   ).catch(err => console.error(err));
