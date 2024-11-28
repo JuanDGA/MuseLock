@@ -11,16 +11,22 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pe.muselock.demongfile.dto.PublicacionDTO;
 import pe.muselock.demongfile.entity.ImagenEntity;
 import pe.muselock.demongfile.entity.PublicacionEntity;
+import pe.muselock.demongfile.entity.UsuarioEntity;
 import pe.muselock.demongfile.service.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -48,10 +54,8 @@ public class MediaController {
   private ModelMapper modelMapper;
 
   @PostMapping("upload/")
-  public Map<String, String> uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("id") Long id) throws Exception {
-
-//    System.out.println(id);
-//    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(id);
+  public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile multipartFile) throws Exception {
+    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(1l);
 
     String[] info = storageService.store(multipartFile).split(",");
     String path = info[0];
@@ -68,7 +72,8 @@ public class MediaController {
 
     double mostSimilar = similarityService.checkSimilarity(multipartFile.getBytes());
 
-    if (mostSimilar > 0.85) throw new Exception("Image already exists");
+    if (mostSimilar > 0.85)
+      return ResponseEntity.badRequest().body(Map.of("error", "Image already exists"));
 
     ImagenEntity imagenEntity = new ImagenEntity();
     imagenEntity.setAncho(ancho);
@@ -85,11 +90,11 @@ public class MediaController {
     publicacionEntity.setFechaPublicacion(new Date());
     publicacionEntity.setLikes(0);
     publicacionEntity.setVistas(0);
-//    publicacionEntity.setUsuario(usuarioEntity);
+    publicacionEntity.setUsuario(usuarioEntity);
     publicacionEntity.setImagen(imagen);
-    //publicacionService.crearPublicacion(publicacionEntity);
+    publicacionService.crearPublicacion(publicacionEntity);
 
-    return Map.of("url", url, "hash", hash);
+    return ResponseEntity.ok(Map.of("url", url, "hash", hash));
   }
 
   @GetMapping("{filename:.+}")

@@ -23,7 +23,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://${AUTH0_DOMAIN}/
+          issuer-uri: https://muselock.us.auth0.com/
+          audiences:
+            - https://muselock/
 media:
   location: mediafiles
 server:
