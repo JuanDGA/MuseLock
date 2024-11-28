@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule, AuthService } from '@auth0/auth0-angular';
 import { CommonModule } from '@angular/common';
-import { Usuario } from './login/usuario';
+import {firstValueFrom} from "rxjs"
 
 @Component({
   selector: 'app-root',
@@ -16,24 +16,20 @@ import { Usuario } from './login/usuario';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements AfterViewChecked{
+export class AppComponent implements AfterViewChecked {
   title = 'muselock';
 
   islogged = false;
 
-  constructor(private router: Router){}
-  
+  constructor(private router: Router, public auth: AuthService){}
+
   ngAfterViewChecked(){
-    let user = sessionStorage.getItem('usuario');
-    if (user != null){
-      this.islogged = true;
-    } else {
-      this.islogged = false;
-    }
+    this.auth.isAuthenticated$.subscribe(it => this.islogged = it);
   }
-  // login(){
-  //   this.auth.loginWithRedirect();
-  // }
+
+  login(isSignup: boolean = false){
+    this.auth.loginWithRedirect({authorizationParams: {screen_hint: isSignup ? "login" : "signup"}});
+  }
 
   logout(){
     console.log('salir');

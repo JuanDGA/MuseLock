@@ -100,7 +100,7 @@ public class MediaController {
     return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType).body(file);
   }
 
-  @GetMapping("publicaciones")
+  @GetMapping("publicaciones/")
   public List<PublicacionDTO> getPublicaciones() {
     List<PublicacionEntity> publicaciones = publicacionService.publicaciones();
     return modelMapper.map(publicaciones, new TypeToken<List<PublicacionDTO>>() {
