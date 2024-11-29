@@ -59,7 +59,7 @@ public class MediaController {
 
     String[] info = storageService.store(multipartFile).split(",");
     String path = info[0];
-    String host = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+    String host = "https://server.muselock.site";
 
     Integer ancho = Integer.valueOf(info[1]);
     Integer largo = Integer.valueOf(info[2]);
