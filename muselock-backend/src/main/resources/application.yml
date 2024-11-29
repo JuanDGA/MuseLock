@@ -33,4 +33,4 @@ server:
     context-path: /api
   port: 8080
 similarity:
-  url: http://0.0.0.0:8001
+  url: http://localhost:8001
