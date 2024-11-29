@@ -72,6 +72,8 @@ public class MediaController {
 
     double mostSimilar = similarityService.checkSimilarity(multipartFile.getBytes());
 
+    System.out.println(mostSimilar);
+
     if (mostSimilar > 0.85)
       return ResponseEntity.badRequest().body(Map.of("error", "Image already exists"));
 

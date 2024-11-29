@@ -26,12 +26,12 @@ export class FeedComponent implements OnInit{
   getPublicaciones():void{
     this.publicacionService.getPublicaciones().subscribe((publicaciones)=>{
       this.publicaciones = publicaciones;
+      this.publicacionesAgrupadas = this.agruparEnColumnas(this.publicaciones, 4);
     });
   }
 
   ngOnInit() {
     this.getPublicaciones();
-    this.publicacionesAgrupadas = this.agruparEnColumnas(this.publicaciones, 4);
   }
 
   isModalOpen = false;
@@ -68,7 +68,7 @@ export class FeedComponent implements OnInit{
       this.isScreenBlocked = false;
     }, 1000); // Mantener el fondo negro por 1 segundo
   }
-  
+
   agruparEnColumnas(array: any[], tamanio: number): any[] {
     const resultado: any[] = [];
     for (let i = 0; i < tamanio; i++) {
@@ -84,5 +84,5 @@ export class FeedComponent implements OnInit{
     this.selectedPublicacion = publicacion; // Asigna la publicación seleccionada
     this.openModal();
   }
-  
+
 }

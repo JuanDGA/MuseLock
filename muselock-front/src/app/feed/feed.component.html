@@ -11,7 +11,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -26,11 +26,11 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
-        
+
         <div>
             <div class="publicacion-container">
                 <img src="https://cdn.pixabay.com/photo/2013/07/13/13/32/demon-161049_1280.png" alt="">
@@ -41,15 +41,15 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
-        
+
     </div>
-    
+
     <div class="column">
-        
+
         <div>
             <div class="publicacion-container">
                 <img src="https://cdn.pixabay.com/photo/2024/03/08/14/04/camel-8620974_1280.png" alt="">
@@ -60,11 +60,11 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
-        
+
         <div>
             <div class="publicacion-container">
                 <img src="https://cdn.pixabay.com/photo/2023/01/14/19/54/christmas-7718958_1280.jpg" alt="">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -90,13 +90,13 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
-        
+
     </div>
-    
+
     <div class="column">
         <div>
             <div class="publicacion-container">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -137,12 +137,12 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 
     <div class="column">
@@ -156,7 +156,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
                 </div>
                 <div class="info-usuario">
                     <p>Nombre Apellido</p>
-                    <p>&#64;arroba</p>                    
+                    <p>&#64;arroba</p>
                 </div>
             </div>
         </div>
@@ -201,28 +201,28 @@
         <div class="publicacion-column">
           <!-- Iterar sobre cada publicación dentro de la columna -->
           <div class="publicacion-container mb-4" *ngFor="let publicacion of columna">
-            <img  
+            <img
               class="img-fluid rounded"
               [src]="publicacion.imagen.url"
               [alt]="publicacion.fechaPublicacion"
-              (click)="onSelected(publicacion)"  
+              (click)="onSelected(publicacion)"
               >
             <div class="info-container mt-2">
               <div class="cuadrado">
-                <img 
+                <img
                   class="img-thumbnail rounded-circle"
-                  src={{publicacion.usuario.fotoPerfil.url}}
-                  alt={{publicacion.usuario.usuario}}>
+                  src="https://i.pravatar.cc/50"
+                  alt="usuario">
               </div>
               <div class="info-usuario">
-                <p>{{ publicacion.usuario.nombre}}</p>
-                <p>&#64;{{ publicacion.usuario.usuario}}</p>
+                <p>Usuario</p>
+                <p>&#64;usuario</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+
   </section>
 
   <app-publicacion
@@ -230,6 +230,6 @@
     [publicacionDetail]="selectedPublicacion"
     (close)="closeModal()"
 ></app-publicacion>
-  
+
 
 <!--app-publicacion *ngIf="isModalOpen" (close)="closeModal()"></app-publicacion-->
