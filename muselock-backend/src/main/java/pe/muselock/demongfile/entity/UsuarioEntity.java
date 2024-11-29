@@ -26,4 +26,6 @@ public class UsuarioEntity extends BaseEntity {
 
   @OneToOne
   private ImagenEntity fotoPerfil;
+
+  private String roles="USER";
 }

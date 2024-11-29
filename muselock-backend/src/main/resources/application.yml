@@ -31,6 +31,6 @@ media:
 server:
   servlet:
     context-path: /api
-  port: 8080
+  port: 8000
 similarity:
   url: http://localhost:9000
