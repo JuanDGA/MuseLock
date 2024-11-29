@@ -8,6 +8,10 @@ app = FastAPI()
 class MostSimilar(BaseModel):
     image_data: str
 
+@app.get("/")
+def hello():
+    return "hello"
+
 @app.post("/most_similar")
 async def find_most_similar(most_similar: MostSimilar):
     vector = await get_vector(most_similar.image_data)
