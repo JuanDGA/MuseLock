@@ -1,5 +1,6 @@
 package pe.muselock.demongfile.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,17 @@ public class UsuarioService {
     return usuarioRepository.save(usuarioEntity);
   }
 
+  @Transactional
+  public UsuarioEntity loginUsuario(String usuario, String password) throws EntityNotFoundException {
+      List<UsuarioEntity> usuarioEntity=usuarioRepository.findByUsuario(usuario);
+      if(usuarioEntity.isEmpty()){
+          throw new EntityNotFoundException("Usuario no encontrado");
+      }
+      if(!usuarioEntity.get(0).getPassword().equals(password)){
+        throw new EntityNotFoundException("Contraseña incorrecta");
+      }
+      return usuarioEntity.get(0);}
+    
   public UsuarioEntity obtenerUsuariobyId(Long idUsuario) throws Exception {
     Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findById(idUsuario);
     if (usuarioEntity.isEmpty()) {

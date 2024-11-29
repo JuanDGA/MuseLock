@@ -37,5 +37,4 @@ async def get_similar_images(query_vector: list[float], amount: int):
         include_values=False,
         include_metadata=False
     )
-
-    return list(map(lambda x: f"{x["id"]};{x["score"]}", results["matches"]))
+    return list(map(lambda x: f"{x['id']};{x['score']}", results["matches"]))

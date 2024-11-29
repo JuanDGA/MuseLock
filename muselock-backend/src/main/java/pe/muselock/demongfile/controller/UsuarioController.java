@@ -5,6 +5,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 import pe.muselock.demongfile.dto.UsuarioBasicDTO;
 import pe.muselock.demongfile.dto.UsuarioDetailDTO;
 import pe.muselock.demongfile.entity.UsuarioEntity;
@@ -27,6 +28,14 @@ public class UsuarioController {
     List<UsuarioEntity> usuarios = usuarioService.obtenerUsuarios();
     return modelMapper.map(usuarios, new TypeToken<List<UsuarioBasicDTO>>() {
     }.getType());
+  }
+
+
+  @GetMapping(value = "/{usuario}")
+  @ResponseStatus(code = HttpStatus.OK)
+  public UsuarioBasicDTO findOne(@PathVariable("usuario") Long id) throws Exception{
+      UsuarioEntity usuario = usuarioService.obtenerUsuariobyId(id);
+      return modelMapper.map(usuario, UsuarioBasicDTO.class);
   }
 
   @PostMapping

@@ -4,8 +4,8 @@
   <div>
     <ul>
 
-      <li *ngIf="!islogged"><a (click)="login()">Iniciar Sesion</a></li>
-      <li *ngIf="!islogged"><a (click)="login(true)">Registrarse</a></li>
+      <li *ngIf="!islogged"><a (click)="login(true)">Iniciar Sesion</a></li>
+      <li *ngIf="!islogged"><a (click)="login()">Registrarse</a></li>
 
       <li *ngIf="islogged"><a [routerLink]="['/perfil']">Perfil</a></li>
       <li *ngIf="islogged"><a [routerLink]="['/upload']" href="">Subir Imagen</a></li>
