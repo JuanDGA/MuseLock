@@ -55,7 +55,7 @@ public class MediaController {
 
   @PostMapping("upload/")
   public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile multipartFile) throws Exception {
-    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(1l);
+//    UsuarioEntity usuarioEntity = usuarioService.obtenerUsuariobyId(1l);
 
     String[] info = storageService.store(multipartFile).split(",");
     String path = info[0];
@@ -90,7 +90,7 @@ public class MediaController {
     publicacionEntity.setFechaPublicacion(new Date());
     publicacionEntity.setLikes(0);
     publicacionEntity.setVistas(0);
-    publicacionEntity.setUsuario(usuarioEntity);
+//    publicacionEntity.setUsuario(usuarioEntity);
     publicacionEntity.setImagen(imagen);
     publicacionService.crearPublicacion(publicacionEntity);
 

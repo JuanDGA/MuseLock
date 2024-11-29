@@ -29,10 +29,10 @@ public class PublicacionService {
 
   @Transactional
   public PublicacionEntity crearPublicacion(PublicacionEntity publicacionEntity) throws Exception {
-    Optional<UsuarioEntity> usuario = usuarioRepository.findById(publicacionEntity.getUsuario().getId());
-    if (usuario.isEmpty()) {
-      throw new Exception("Usuario Invalido para la publicacion");
-    }
+//    Optional<UsuarioEntity> usuario = usuarioRepository.findById(publicacionEntity.getUsuario().getId());
+//    if (usuario.isEmpty()) {
+//      throw new Exception("Usuario Invalido para la publicacion");
+//    }
 
     Optional<ImagenEntity> imagen = imagenRepository.findById(publicacionEntity.getImagen().getId());
     if (imagen.isEmpty()) {
