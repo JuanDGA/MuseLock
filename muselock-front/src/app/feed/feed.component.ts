@@ -48,7 +48,7 @@ export class FeedComponent implements OnInit{
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    console.log(`Key pressed: ${event.key}`);
+    //console.log(`Key pressed: ${event.key}`);
     if ((event.metaKey && event.shiftKey) || (event.ctrlKey && event.key === 'p')||(event.ctrlKey && event.shiftKey)) {
       this.blockScreen();
     }
@@ -83,6 +83,13 @@ export class FeedComponent implements OnInit{
   onSelected(publicacion: Publicacion): void {
     this.selectedPublicacion = publicacion; // Asigna la publicación seleccionada
     this.openModal();
+  }
+
+
+  @HostListener('document:contextmenu', ['$event'])
+  blockRightClick(event: MouseEvent): void {
+    event.preventDefault();  // Evita la aparición del menú contextual
+    //console.log('Clic derecho bloqueado');
   }
 
 }

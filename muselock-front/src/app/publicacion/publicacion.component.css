@@ -251,3 +251,15 @@
     margin: 0 auto; 
     display: block;
 }
+
+.screen-black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 9999; /* Asegúrate de que esté sobre todo */
+    pointer-events: none; /* Permite que los clics pasen al contenido subyacente */
+  }
+  
