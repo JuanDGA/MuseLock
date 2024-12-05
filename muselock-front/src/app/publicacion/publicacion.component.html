@@ -5,21 +5,16 @@
             <img src="../assets/image/equis.png" alt="" (click)="closeModal()">
             <div class="user-container">
                 <div class="cuadrado">
-                    <img 
-                        src={{publicacionDetail?.usuario?.fotoPerfil?.url}}
-                        alt="" 
-                        class="foto-perfil">
+           
                 </div>
                 <div class="info-usuario">
-                    <p>{{publicacionDetail?.usuario?.nombre}}</p>
-                    <p>&#64;{{publicacionDetail?.usuario?.usuario}}</p>                    
+                                
                 </div>
                 <div></div>
             </div>
             <div class="img-container">
                 <div class="img">
                     <div class="info-imagen" [class.mostrar]="mostrarInf">
-                        <p><b>Autor:</b> &#64;{{publicacionDetail?.usuario?.usuario}}</p>
                         <p><b>Fecha Publicacion: </b>{{publicacionDetail?.fechaPublicacion}}</p>
                         <p><b>Tamaño: </b> {{publicacionDetail?.imagen?.ancho}}px x {{publicacionDetail?.imagen?.largo}}px </p>
                         <p><b>Formato: </b>{{publicacionDetail?.imagen?.formato}}</p>
@@ -29,13 +24,12 @@
                         alt="">
                 </div>
             </div>
-
             <div class="interacciones-container">
-                <div>
+                <!--div>
                     <p>{{publicacionDetail?.vistas}}</p>
                     <p>{{publicacionDetail?.likes}}</p>
                     <p>{{publicacionDetail?.vistas}}</p>
-                </div>
+                </div-->
 
                 <p class="button" (click)="mostrarInfo()">Información</p>
             </div>

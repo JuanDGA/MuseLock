@@ -211,12 +211,12 @@
               <div class="cuadrado">
                 <img
                   class="img-thumbnail rounded-circle"
-                  src="https://i.pravatar.cc/50"
+                  [src]="getRandomAvatar()[0]"
                   alt="usuario">
               </div>
               <div class="info-usuario">
-                <p>Usuario</p>
-                <p>&#64;usuario</p>
+                <p>{{getRandomName()}}</p>
+                <p>&#64;{{getRandomUsername()}}</p>
               </div>
             </div>
           </div>

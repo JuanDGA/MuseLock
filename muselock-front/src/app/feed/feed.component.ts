@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Publicacion } from '../clases/publicacion';
 import { PublicacionService } from '../servicios/publicacion.service';
 import { HttpClientModule } from '@angular/common/http';
+import { faker } from '@faker-js/faker';
 
 
 
@@ -20,6 +21,7 @@ export class FeedComponent implements OnInit{
   publicacionesAgrupadas: any[] = [];
   selected: Boolean = false;
   selectedPublicacion: Publicacion | null = null;
+
 
   constructor(private publicacionService: PublicacionService){}
 
@@ -48,8 +50,7 @@ export class FeedComponent implements OnInit{
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    //console.log(`Key pressed: ${event.key}`);
-    if ((event.metaKey && event.shiftKey) || (event.ctrlKey && event.key === 'p')||(event.ctrlKey && event.shiftKey)) {
+    if ((event.metaKey && event.shiftKey) || (event.ctrlKey && event.key === 'p')||(event.ctrlKey && event.shiftKey) ||event.key === 'PrintScreen') {
       this.blockScreen();
     }
   }
@@ -85,7 +86,23 @@ export class FeedComponent implements OnInit{
     this.openModal();
   }
 
+  getRandomAvatar(): [string, string] {
+     // Número aleatorio
+     const randomNumber = Math.floor(Math.random() * 21); // Genera un número entre 0 y 20
+    return [`https://i.pravatar.cc/${randomNumber}`, this.getRandomUsername()]; // Retorna la URL con el número aleatorio
+  }
 
+    // Lista de nombres de ejemplo para el nombre de usuario aleatorio
+    private usernames = ['Usuario123', 'JuanPerez', 'MariaLopez', 'CarlosGomez', 'AnaMartinez'];
+
+    // Función que devuelve un nombre de usuario aleatorio
+    getRandomUsername(): string {
+      return faker.internet.userName() // Devuelve el nombre correspondiente
+    }
+
+    getRandomName(): string {
+      return faker.name.firstName() // Devuelve el nombre correspondiente
+    }
   @HostListener('document:contextmenu', ['$event'])
   blockRightClick(event: MouseEvent): void {
     event.preventDefault();  // Evita la aparición del menú contextual
