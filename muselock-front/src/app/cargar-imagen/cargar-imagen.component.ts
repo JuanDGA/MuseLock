@@ -159,7 +159,7 @@ export class CargarImagenComponent {
     if (redirectButton) {
       redirectButton.addEventListener('click', () => {
         //window.location.href = 'https://muselock.site/';
-        window.location.href = 'http://localhost:4200/';
+        window.location.href = 'https://server.muselock.site/api/publicaciones/';
       });
     }
   }
@@ -218,7 +218,7 @@ export class CargarImagenComponent {
     if (redirectButton) {
       redirectButton.addEventListener('click', () => {
         //window.location.href = 'https://muselock.site/';
-        window.location.href = 'http://localhost:4200/';
+        window.location.href = 'https://server.muselock.site/api/publicaciones/';
       });
     }
   }
